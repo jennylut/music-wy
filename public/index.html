@@ -19,7 +19,23 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Music-wy</title>
+    <script>
+      var ohtml = document.documentElement;
+      getSize();
+
+      function getSize(){
+        var screenWidth = ohtml.clientWidth;
+        if(screenWidth <= 320){
+          ohtml.style.fontSize = '17px';
+        }else if(screenWidth >= 750){
+          ohtml.style.fontSize = '40px';
+        }else{
+          ohtml.style.fontSize = screenWidth/(750/40)+'px';
+        }
+      }
+      
+    </script>
   </head>
   <body>
     <noscript>
