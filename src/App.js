@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
+import {
+  Router,
+  Route,
+  NavLink as Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import './index.css';
 
-import './App.css';
+import Nav from "./component/common/nav";
+import Recommend from "./component/recommend/recommend";
+import SongList from "./component/songlist/songlist";
+import createBrowserHistory from 'history/createBrowserHistory';
+const history = createBrowserHistory()
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="bg">
-          <div className="logo"></div>
-          <div className="m-song-wrap">
-            <div className="m-song-disc">
-              <div className="m-song-turn">
-                <div className="m-song-rollwrap"></div>
-                <div className="m-song-lgour"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return [
+      <Nav key="1"/>,
+      <Router key="2" history={history}>
+        <Switch>
+          <Route exact path="/recommend" component={Recommend}/>
+          <Route exact path="/songlist" component={SongList}/>
+          <Redirect to="/recommend"/>
+        </Switch>
+      </Router>
+    ];
   }
 }
 
