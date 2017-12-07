@@ -15,10 +15,11 @@ import 'react-dynamic-swiper/lib/styles.css';
   componentDidMount(){
     this.props.Recommend.getBanner();
     this.props.Recommend.getSongList();
+    this.props.Recommend.getMvList();
   }
 
 	render(){
-    const { bannerImgs, songList } = this.props.Recommend;
+    const { bannerImgs, songList, mvList } = this.props.Recommend;
 		return (
       document.getElementById('app'),
 	  	<div className="content">
@@ -50,15 +51,33 @@ import 'react-dynamic-swiper/lib/styles.css';
       <div className="recommend-box">
         <div className="h2">
           <span>推荐歌单</span>
-          <a href="javascript:;" className="more-btn">更多</a>
+          <a href="javascript:;" className="more-btn">更多></a>
         </div>
         <div className="song-list">
           {
             songList.map((item,index)=>{
-              <a href="javascript:;" className="song-items" key={index}>
-                <img className="song-img" src={item.picUrl} alt=""/>
-                <p className="songs-der com-two-overflow">{item.name}</p>
-            </a>
+            return  <a href="javascript:;" className="song-items" key={index}>
+                      <img className="song-img" src={item.picUrl} alt=""/>
+                      <p className="songs-der com-two-overflow">{item.name}</p>
+                    </a>
+             
+            })
+          }
+        </div>
+      </div>
+      <div className="recommend-box">
+        <div className="h2">
+          <span>推荐MV</span>
+          <a href="javascript:;" className="more-btn">更多></a>
+        </div>
+        <div className="song-list">
+          {
+            mvList.map((item,index)=>{
+            return  <a href="javascript:;" className="song-items" key={index}>
+                      <img className="song-img" src={item.picUrl} alt=""/>
+                      <p className="songs-der com-two-overflow">{item.name}</p>
+                    </a>
+             
             })
           }
         </div>

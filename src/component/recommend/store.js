@@ -6,7 +6,8 @@ useStrict(true);
 class Recommend {
 
   @observable bannerImgs = [];
-	@observable songList = [];
+  @observable songList = [];
+	@observable mvList = [];
 
 	@action getBanner = () => {
     $http.get('/banner').then((res) => {
@@ -27,6 +28,15 @@ class Recommend {
       if(res.code && res.code == '200'){
         runInAction(() =>{
           this.songList = res.result;
+        })
+      }
+    })
+  }
+   @action getMvList = () =>{
+    $http.get('/personalized/mv').then((res) =>{
+      if(res.code && res.code == '200'){
+        runInAction(() =>{
+          this.mvList = res.result;
         })
       }
     })
