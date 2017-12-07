@@ -3,27 +3,35 @@ import { $http, Qs } from '../../tools';
 
 useStrict(true);
 
-
 class Recommend {
 
-	@observable bannerImg = '';
+  @observable bannerImgs = [];
+	@observable songList = [];
 
-	@action 
-	getBanner() {
-         /*console.log($http)*/
-	    $http.get('http://192.168.5.18:10001/banner').then((res) => {
-	      if(res.code && res.code== '200'){
-	        runInAction(()=>{
-	        	bannerImg = res.banners;
-	        })
-	      }else{
-	        
-	      }
-	    }, e => {
-	      /*console.log(e, 'err')*/
-	      
-	    });
+	@action getBanner = () => {
+    $http.get('/banner').then((res) => {
+      if(res.code && res.code== '200'){
+        runInAction(()=>{
+        	this.bannerImgs = res.banners;
+        })
+      }else{
+        
+      }
+    }, e => {
+      /*console.log(e, 'err')*/
+    });
 	}
+
+  @action getSongList = () =>{
+    $http.get('/personalized').then((res) =>{
+      if(res.code && res.code == '200'){
+        runInAction(() =>{
+          this.songList = res.result;
+        })
+      }
+    })
+  }
+
 }
 
 

@@ -1,17 +1,15 @@
-/*import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import stores from './store'
+ReactDOM.render(
+	 <Provider {...stores}>
+        <App/>
+    </Provider>, document.getElementById('root'));
 registerServiceWorker();
 
-*/
-import Recommend from './component/recommend/store';
 
-
-export default {
-    Recommend
-   
-}

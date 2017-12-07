@@ -16,6 +16,7 @@ export const Qs = () => {
 }
 const params = Qs();
 const $http = axios.create({
+	baseURL: '/api',
 	timeout:60000,
 	headers: {
 		'X-Requested-With': 'XMLHttpRequest',
