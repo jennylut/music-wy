@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {
+/*import {
   BrowserRouter as Router,
   NavLink as Link,
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom'*/
 import { inject, observer } from 'mobx-react';
 import { Swiper, Slide } from 'react-dynamic-swiper';
 import 'react-dynamic-swiper/lib/styles.css';
@@ -56,7 +56,7 @@ import 'react-dynamic-swiper/lib/styles.css';
         <div className="song-list">
           {
             songList.map((item,index)=>{
-            return  <a href="javascript:;" className="song-items" key={index}>
+            return  <a href={`/SongListDetail?id=${item.id}`} className="song-items" key={index}>
                       <img className="song-img" src={item.picUrl} alt=""/>
                       <p className="songs-der com-two-overflow">{item.name}</p>
                     </a>

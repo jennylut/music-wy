@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {
+/*import {
   BrowserRouter as Router,
   NavLink as Link,
   Redirect
 } from 'react-router-dom'
-
+*/
  export default class SongList extends Component {
 	render(){
 		return (

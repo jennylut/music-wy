@@ -7,25 +7,23 @@ import {
   Redirect
 } from 'react-router-dom';
 import './index.css';
-
-import Nav from "./component/common/nav";
-import Recommend from "./component/recommend/recommend";
-import SongList from "./component/songlist/songlist";
+import Home from "./component/home/home";
+import SongListDetail from "./component/songListDetail/songListDetail";
 import createBrowserHistory from 'history/createBrowserHistory';
 const history = createBrowserHistory()
 
 class App extends Component {
   render() {
-    return [
-      <Nav key="1"/>,
-      <Router key="2" history={history}>
-        <Switch>
-          <Route exact path="/recommend" component={Recommend}/>
-          <Route exact path="/songlist" component={SongList}/>
-          <Redirect to="/recommend"/>
-        </Switch>
-      </Router>
-    ];
+    return (
+      <div>
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/home" component={Home}/>
+            <Route exact path="/songlistdetail" component={SongListDetail}/>
+            <Redirect to="/home"/>
+          </Switch>
+        </Router>
+      </div>);
   }
 }
 
